@@ -14,15 +14,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     let scrollPosition = window.scrollY;
 
+    // Toggle navbar blur on scroll
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        if (scrollPosition > 10) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+    }
+
     document.querySelectorAll('section').forEach(section => {
         const sectionTop = section.offsetTop - 100;
         const sectionHeight = section.clientHeight;
         const sectionId = section.getAttribute('id');
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            document.querySelector(`a[href="#${sectionId}"]`).classList.add('active');
+            const link = document.querySelector(`a[href="#${sectionId}"]`);
+            if (link) link.classList.add('active');
         } else {
-            document.querySelector(`a[href="#${sectionId}"]`).classList.remove('active');
+            const link = document.querySelector(`a[href="#${sectionId}"]`);
+            if (link) link.classList.remove('active');
         }
     });
 });
