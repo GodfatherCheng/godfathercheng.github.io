@@ -11,6 +11,10 @@
     --shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.8;
@@ -41,7 +45,8 @@ h1, .subtitle {
 
 /* Navigation */
 .navbar {
-    background-color: var(--white);
+    background-color: rgba(255,255,255,0.8);
+    backdrop-filter: blur(8px);
     box-shadow: var(--shadow);
     position: fixed;
     width: 100%;
@@ -139,7 +144,7 @@ h1, .subtitle {
 .hero {
     text-align: center;
     padding: 10rem 0 6rem;
-    background: var(--georgetown-blue);
+    background: linear-gradient(135deg, var(--georgetown-blue), var(--secondary-color));
     color: var(--white);
 }
 
@@ -218,6 +223,7 @@ h1, .subtitle {
     margin-bottom: 2rem;
     padding: 2rem;
     background-color: var(--white);
+    border-left: 4px solid var(--accent-color);
     border-radius: 12px;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease;
