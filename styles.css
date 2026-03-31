@@ -21,6 +21,9 @@
     --badge-report-bg: #e7f5ff;
     --badge-report-fg: #003057;
     --badge-report-br: #a5d8ff;
+    --badge-submitted-bg: #e6fcf5;
+    --badge-submitted-fg: #087f5b;
+    --badge-submitted-br: #63e6be;
     --max-width: 1100px;
     /* Slightly narrower for readability */
     --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
@@ -312,6 +315,12 @@ section {
     background: var(--badge-report-bg);
     color: var(--badge-report-fg);
     border-color: var(--badge-report-br);
+}
+
+.badge-submitted {
+    background: var(--badge-submitted-bg);
+    color: var(--badge-submitted-fg);
+    border-color: var(--badge-submitted-br);
 }
 
 .badge:hover {
