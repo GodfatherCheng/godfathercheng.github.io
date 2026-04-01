@@ -573,9 +573,50 @@ footer {
 .paper-visuals h5 {
     color: var(--primary-color);
     font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     font-family: 'Lora', serif;
     font-weight: 600;
+}
+
+/* Expandable findings toggle */
+.findings-toggle {
+    margin-top: 0.5rem;
+}
+
+.findings-toggle summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
+
+.findings-toggle summary:hover {
+    opacity: 0.75;
+}
+
+.findings-toggle summary::-webkit-details-marker {
+    display: none;
+}
+
+.findings-toggle summary::before {
+    content: '▸';
+    font-size: 1rem;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.findings-toggle[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.findings-toggle summary h5 {
+    margin: 0;
+    display: inline;
 }
 
 .visual-grid {
