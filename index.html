@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mike Cheng - Economics PhD</title>
+    <title>Mike Cheng - Job Market Candidate in Economics</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap"
@@ -15,13 +15,14 @@
     <nav class="navbar">
         <div class="nav-content">
             <div class="name">Mike Cheng</div>
-            <button class="nav-toggle" aria-label="toggle navigation">
+            <button class="nav-toggle" aria-label="toggle navigation" aria-expanded="false" aria-controls="site-nav">
                 <span class="hamburger"></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="site-nav">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#research">Research</a></li>
-                <li><a href="#project">Project</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#cv">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -30,44 +31,36 @@
 
     <main>
         <section id="home" class="hero">
-            <div class="container">
-                <img src="images/CenterProfile.png" alt="Mike Cheng" class="profile-img">
-                <h1>Mike Cheng</h1>
-                <p class="subtitle">PhD Candidate in Economics</p>
-                <p class="institution">Georgetown University</p>
-                <p class="bio white-text">I am a fourth year Economics PhD candidate with research interests in
-                    international trade and industrial organization. My research focuses on the intersection of FDI,
-                    market power, and supply chain structure. I welcome coauthorship opportunities.</p>
-            </div>
-        </section>
-
-        <section id="education" class="section">
-            <div class="container">
-                <h2>Education</h2>
-                <div class="education-item">
-                    <h3>Georgetown University</h3>
-                    <p>PhD Candidate in Economics</p>
+            <div class="container hero-layout">
+                <div class="hero-content">
+                    <p class="eyebrow">Job Market Candidate in Economics</p>
+                    <h1>Mike Cheng</h1>
+                    <p class="subtitle">International Trade | Industrial Organization</p>
+                    <p class="institution">Georgetown University</p>
+                    <p class="bio">I am an economics PhD candidate studying international trade, foreign direct
+                        investment, production networks, and industrial organization. My research examines how firms,
+                        sourcing relationships, and market structure shape the organization of global value chains.</p>
+                    <div class="hero-actions">
+                        <a href="https://georgetown.box.com/s/82guabolghhd2x1xyoh4c0h26bv303q0" target="_blank"
+                            rel="noopener noreferrer" class="button button-primary">Download CV</a>
+                        <a href="#research" class="button button-secondary">Research</a>
+                    </div>
                 </div>
-                <div class="education-item">
-                    <h3>University of Chicago, Harris School of Public Policy</h3>
-                    <p>Master of Arts in Public Policy</p>
-                    <p>Certificate of Research Methods and Certificate of Financial Policy</p>
-                    <p class="honors">Recipient of Harris Merit Scholarship</p>
-                    <p class="year">June 2021</p>
-                </div>
-                <div class="education-item">
-                    <h3>Carnegie Mellon University</h3>
-                    <p>Bachelor of Arts in Behavioral Economics, Policy and Organization</p>
-                    <p>Minor in International Relations and Politics and Economics</p>
-                    <p class="honors">Graduated with University Honor</p>
-                    <p class="honors">Member of Omicron Delta Epsilon Honor Society</p>
-                    <p class="year">May 2019</p>
+                <div class="hero-portrait" aria-label="Portrait of Mike Cheng">
+                    <img src="images/CenterProfile.png" alt="Mike Cheng">
                 </div>
             </div>
         </section>
 
-        <section id="research" class="section">
+        <section id="research" class="section section-research">
             <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Research</p>
+                    <h2>Research</h2>
+                    <p>Evidence-driven work on trade, investment, production networks, and the organization of global
+                        supply chains.</p>
+                </div>
+
                 <div class="paper">
                     <h3>Job Market Paper</h3>
                     <div class="paper-item paper-highlight">
@@ -254,9 +247,13 @@
             </div>
         </section>
 
-        <section id="project" class="section">
+        <section id="projects" class="section">
             <div class="container">
-                <h2>Project</h2>
+                <div class="section-heading">
+                    <p class="eyebrow">Applied Work</p>
+                    <h2>Projects</h2>
+                    <p>Selected data and forecasting work related to trade policy and economic measurement.</p>
+                </div>
 
                 <div class="paper">
                     <div class="paper-item">
@@ -292,22 +289,67 @@
             </div>
         </section>
 
-        <section id="cv" class="section">
+        <section id="education" class="section section-compact">
             <div class="container">
-                <h2>Curriculum Vitae</h2>
-                <p>You can download my CV <a href="https://georgetown.box.com/s/82guabolghhd2x1xyoh4c0h26bv303q0"
-                        target="_blank" rel="noopener noreferrer">here</a>.</p>
+                <div class="section-heading">
+                    <p class="eyebrow">Training</p>
+                    <h2>Education</h2>
+                </div>
+                <div class="education-list">
+                    <div class="education-item">
+                        <span class="education-year">Current</span>
+                        <div class="education-content">
+                            <h3>Georgetown University</h3>
+                            <p>PhD Candidate in Economics</p>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <span class="education-year">June 2021</span>
+                        <div class="education-content">
+                            <h3>University of Chicago, Harris School of Public Policy</h3>
+                            <p>Master of Arts in Public Policy</p>
+                            <p>Certificate of Research Methods and Certificate of Financial Policy</p>
+                            <p class="honors">Recipient of Harris Merit Scholarship</p>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <span class="education-year">May 2019</span>
+                        <div class="education-content">
+                            <h3>Carnegie Mellon University</h3>
+                            <p>Bachelor of Arts in Behavioral Economics, Policy and Organization</p>
+                            <p>Minor in International Relations and Politics and Economics</p>
+                            <p class="honors">Graduated with University Honor</p>
+                            <p class="honors">Member of Omicron Delta Epsilon Honor Society</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="contact" class="section">
+        <section id="cv" class="section section-compact">
             <div class="container">
-                <h2>Contact</h2>
+                <div class="callout-row">
+                    <div>
+                        <p class="eyebrow">CV</p>
+                        <h2>Curriculum Vitae</h2>
+                        <p>Full academic CV with research, education, presentations, and professional activities.</p>
+                    </div>
+                    <a href="https://georgetown.box.com/s/82guabolghhd2x1xyoh4c0h26bv303q0" target="_blank"
+                        rel="noopener noreferrer" class="button button-primary">Download CV</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section-compact">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Contact</p>
+                    <h2>Contact</h2>
+                </div>
                 <div class="contact-info">
-                    <p><strong>Email:</strong> zc156@georgetown.edu</p>
-                    <p><strong>Address:</strong> Department of Economics<br>
-                        Georgetown University<br>
-                        Washington, DC</p>
+                    <p><strong>Email</strong> <a href="mailto:zc156@georgetown.edu">zc156@georgetown.edu</a></p>
+                    <p><strong>Department</strong> Economics, Georgetown University</p>
+                    <p><strong>Location</strong> Washington, DC</p>
                 </div>
             </div>
         </section>
@@ -315,7 +357,7 @@
 
     <footer>
         <div class="container">
-            <p> 2026 Mike Cheng | Last updated: March 2026</p>
+            <p>2026 Mike Cheng | Last updated: May 2026</p>
         </div>
     </footer>
 
