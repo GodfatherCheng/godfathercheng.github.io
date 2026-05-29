@@ -690,7 +690,7 @@ footer p {
     }
 
     .hero-portrait {
-        justify-self: start;
+        justify-self: center;
     }
 
     .hero-portrait img {
