@@ -801,7 +801,9 @@ footer p {
     }
 
     .hero-actions {
-        margin-top: 0;
+        justify-content: center;
+        gap: 0.65rem;
+        margin-top: 1.35rem;
     }
 
     .section,
@@ -847,6 +849,13 @@ footer p {
     .button,
     .paper-link {
         width: 100%;
+    }
+
+    .hero .button {
+        width: auto;
+        min-width: 132px;
+        padding-right: 1rem;
+        padding-left: 1rem;
     }
 
     .badge {
