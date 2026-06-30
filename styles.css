@@ -415,6 +415,55 @@ section {
     margin: 0 0 0.9rem;
 }
 
+.paper-meta-compact {
+    margin-bottom: 0.65rem;
+}
+
+.presentation-list {
+    display: grid;
+    gap: 0.42rem;
+    margin: 1rem 0 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--soft-line);
+}
+
+.presentation-label {
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    text-transform: uppercase;
+}
+
+.presentation-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.presentation-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    max-width: 100%;
+    padding: 0.28rem 0.58rem;
+    border: 1px solid var(--soft-line);
+    border-radius: 6px;
+    background: var(--off-white);
+    color: var(--slate);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+a.presentation-chip:hover {
+    background: var(--blue-soft);
+    border-color: var(--line);
+    color: var(--georgetown-blue);
+}
+
 .badge {
     display: inline-flex;
     align-items: center;
@@ -862,5 +911,9 @@ footer p {
         width: 100%;
         justify-content: flex-start;
         border-radius: var(--radius);
+    }
+
+    .presentation-chip {
+        width: 100%;
     }
 }
