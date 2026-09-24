@@ -408,6 +408,12 @@ section {
     font-style: italic;
 }
 
+.paper-status {
+    margin: -0.15rem 0 0.85rem;
+    color: var(--slate);
+    font-size: 0.9rem;
+}
+
 .paper-meta {
     display: flex;
     flex-wrap: wrap;
