@@ -1,79 +1,49 @@
-// JavaScript for interactivity: smooth scroll, active nav, mobile menu, navbar blur
+// Mobile menu and active-section highlighting in the nav.
 
-// Cache sections and nav link mapping
-const sections = Array.from(document.querySelectorAll('section'));
-const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-const linkById = new Map(navLinks.map(a => [a.getAttribute('href').replace('#', ''), a]));
+const toggle = document.querySelector('.nav-toggle');
+const menu = document.querySelector('.nav-links');
+const sectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+const sections = sectionLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
 
-function setActiveLink(id) {
-    navLinks.forEach(a => a.classList.remove('active'));
-    const link = linkById.get(id);
-    if (link) link.classList.add('active');
+function setMenu(open) {
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 }
 
-// Add smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const hash = this.getAttribute('href');
-        const target = document.querySelector(hash);
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-            const id = hash.slice(1);
-            setActiveLink(id);
+if (toggle && menu) {
+    toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.addEventListener('click', event => {
+        if (event.target.closest('a')) setMenu(false);
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menu.classList.contains('open')) {
+            setMenu(false);
+            toggle.focus();
         }
     });
-});
-
-// Active nav highlighting based on viewport midpoint + navbar blur
-function updateActiveOnScroll() {
-    const scrollY = window.scrollY || window.pageYOffset;
-
-    // Toggle navbar blur on scroll
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        if (scrollY > 10) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
-    }
-
-    const checkpoint = scrollY + window.innerHeight / 3; // 1/3 viewport from top
-    let currentId = null;
-
-    for (const section of sections) {
-        const id = section.id;
-        if (!linkById.has(id)) continue; // only consider sections in nav
-        const top = section.offsetTop;
-        const bottom = top + section.offsetHeight;
-        if (checkpoint >= top && checkpoint < bottom) {
-            currentId = id;
-            break;
-        }
-    }
-
-    if (!currentId && scrollY < 10 && linkById.has('home')) currentId = 'home';
-    if (currentId) setActiveLink(currentId);
+    document.addEventListener('click', event => {
+        if (menu.classList.contains('open') && !event.target.closest('.navbar')) setMenu(false);
+    });
 }
 
-window.addEventListener('scroll', updateActiveOnScroll, { passive: true });
-
-document.addEventListener('DOMContentLoaded', () => {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('show');
-            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('show');
-            });
-        });
+function updateActive() {
+    const line = window.innerHeight * 0.3;
+    let current = null;
+    for (const section of sections) {
+        if (section.getBoundingClientRect().top <= line) current = section;
     }
+    // At the very bottom, the last section may never reach the line.
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        current = sections[sections.length - 1];
+    }
+    sectionLinks.forEach(link => {
+        link.classList.toggle('active', current !== null && link.getAttribute('href') === '#' + current.id);
+    });
+}
 
-    // Initial highlight on load
-    updateActiveOnScroll();
-});
+window.addEventListener('scroll', updateActive, { passive: true });
+window.addEventListener('resize', updateActive);
+updateActive();
